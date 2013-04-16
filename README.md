@@ -13,7 +13,7 @@ Usage
 Tasks
 =====
 
-[] Handle Multiple hashtags
-[] Check if the user is following you
-[] Store results in a sqlite database
-[] Unfollow users after 7 days
+- [ ] Handle Multiple hashtags
+- [ ] Check if the user is following you
+- [ ] Store results in a sqlite database
+- [ ] Unfollow users after 7 days
