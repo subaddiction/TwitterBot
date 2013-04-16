@@ -8,4 +8,12 @@ the user.
 Usage
 =====
 
-python start_bot.py hashtag
+    python start_bot.py hashtag
+	
+Tasks
+=====
+
+[] Handle Multiple hashtags
+[] Check if the user is following you
+[] Store results in a sqlite database
+[] Unfollow users after 7 days
