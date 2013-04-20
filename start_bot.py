@@ -72,5 +72,4 @@ if args.delete:
 	#for f in currentFriends[:100]:
 	#	print f.screen_name
 	#	removeUser = api.DestroyFriendship(f.screen_name)
-
-
+	print "delete"
