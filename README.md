@@ -8,8 +8,14 @@ the user.
 Usage
 =====
 
-    python start_bot.py hashtag
-	
+	usage: start_bot.py [-h] [-hashtag HASHTAG] [-add] [-delete]
+
+	optional arguments:
+	  -h, --help        show this help message and exit
+	  -hashtag HASHTAG  Unfollow users
+	  -add              Follow users
+	  -delete           Unfollow users
+
 Tasks
 =====
 
