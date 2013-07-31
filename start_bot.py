@@ -4,7 +4,7 @@ import twitter
 import sys
 import argparse
 from ConfigParser import SafeConfigParser
-from sets import Set
+#from sets import Set
 
 # Sorting function to remove all duplicate users when searching for hashtags.
 # In some cases the same user may have tweeted multiple times in a row
@@ -40,17 +40,18 @@ access_token_secret = parser.get('API_KEYS', 'access_token_secret')
 parser = argparse.ArgumentParser()
 parser.add_argument("-hashtag", help="Unfollow users", action='store', type=str)
 parser.add_argument("-add", help="Follow users", action='store_true')
-parser.add_argument("-delete", help="Unfollow users", action='store_true')
+#parser.add_argument("-delete", help="Unfollow users", action='store_true')
 args = parser.parse_args()
 
 # Authenticate with twitter to use the Twitter API
 api = twitter.Api(consumer_key=consumer_key, consumer_secret=consumer_secret, access_token_key=access_token, access_token_secret=access_token_secret)
 
 # Query for tweets with the hashtag provided by the user
-query = api.GetSearch("#" + str(args.hashtag), per_page=50)
+query = api.GetSearch("#" + str(args.hashtag), count=100)
+# NOTE: one can follow 1000 accounts per day, limiting to 100 results grants 10 searches+autofollow per day
 
 if args.add:
-	print args.add
+	# print args.add
 	# Create a list for all the users found using the specified hashtag.
 	# Interate through the list and create friendships (Follow them)
 	L = []
@@ -58,18 +59,12 @@ if args.add:
 	for tweet in query:
 		user = tweet.user.screen_name
 		L.insert(index+1, user)
-	#	api.CreateFriendship(user)
-
+		
+		#UNCOMMENT THIS LINE TO ACTUALLY FOLLOW RETRIEVED USERS
+		#api.CreateFriendship(user)
+		#print user, ' FOLLOWED'
+	
+	print 'FOLLOWED ACCOUNTS:'
 	# Remove duplicates for clarity
 	print '\n'.join(removeDuplicates(L))
-	print "Followers: " + str(twitterBot.followers_count)
-	print "Following: " + str(twitterBot.friends_count)
-	print "Now following:"
-
-if args.delete:
-	# Loop through friends and unfollow the 20 most recent followings.
-	#currentFriends = api.GetFriends()
-	#for f in currentFriends[:100]:
-	#	print f.screen_name
-	#	removeUser = api.DestroyFriendship(f.screen_name)
-	print "delete"
+	
