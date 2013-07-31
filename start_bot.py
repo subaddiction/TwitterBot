@@ -58,13 +58,24 @@ if args.add:
 	index = 0
 	for tweet in query:
 		user = tweet.user.screen_name
-		L.insert(index+1, user)
+		userid = tweet.user.id
 		
-		#UNCOMMENT THIS LINE TO ACTUALLY FOLLOW RETRIEVED USERS
-		#api.CreateFriendship(user)
-		#print user, ' FOLLOWED'
+		L.insert(index+1, user)
+		#L.insert(index+1, userid)
+		#print userid, 'FOLLOWED', '(', user, ')'
 	
-	print 'FOLLOWED ACCOUNTS:'
+	ToFollow = removeDuplicates(L)
+	
+	for user in ToFollow:
+		
+		#UNCOMMENT THE NEXT LINE TO ACTUALLY FOLLOW RETRIEVED USERS
+		api.CreateFriendship(screen_name=user)
+		#api.CreateFriendship(user_id=user)
+		print user, 'FOLLOWED'
+		
+	
+	
+	#print 'FOLLOWED ACCOUNTS:'
 	# Remove duplicates for clarity
-	print '\n'.join(removeDuplicates(L))
+	#print '\n'.join(removeDuplicates(L))
 	
