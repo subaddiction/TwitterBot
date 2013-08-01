@@ -8,18 +8,16 @@ the user.
 Usage
 =====
 
-	usage: start_bot.py [-h] [-hashtag HASHTAG] [-add] [-delete]
+usage: start_bot.py [-h] [-hashtag HASHTAG] [-add] [-delete]
 
-	optional arguments:
-	  -h, --help        show this help message and exit
-	  -hashtag HASHTAG  Unfollow users
-	  -add              Follow users
-	  -delete           Unfollow users
+optional arguments:
+  -h, --help        show this help message and exit
+  -hashtag          HASHTAG
+  -add              Follow users
+  
+  
+TODO:
 
-Tasks
-=====
-
-- [ ] Handle Multiple hashtags
-- [ ] Check if the user is following you
-- [ ] Store results in a sqlite database
-- [ ] Unfollow users after 7 days
+Add an option to select user from multiple config files
+Add an option to select a language to narrow searches
+Add an option to specify the desired results count
